@@ -13,11 +13,16 @@ angular.module('ngCarAppApp')
     var inventory = [];
 
     return {
-      grab: function() {
-        var promise = $http.get(db + '/_design/inventory/_view/full').then(function(res) {
-            return res.data.rows;
+      grab: function () {
+        var promise = $http.get(db + '/_design/inventory/_view/full').then(function (res) {
+          return res.data.rows;
         });
         return promise;
+      },
+     upload: function (data) {
+        $http.post(db, data).error(function() {
+          console.log('Error Posting');
+        });
       }
     }
-  });
+  })
