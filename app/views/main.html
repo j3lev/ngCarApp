@@ -1,0 +1,45 @@
+<div class="row" ng-controller="MainCtrl">
+  <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="car in cars">
+    <div class="panel car-container">
+      <div class="row">
+        <div class="col-xs-4 car-info">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="info-label">Make</span>
+              </div>
+              <div class="col-xs-12">
+                <p>{{car.value.make}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="info-label">Model</span>
+              </div>
+              <div class="col-xs-12">
+                <p>{{car.value.model}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="info-label">Year</span></div>
+              <div class="col-xs-12">
+                <p>{{car.value.year}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="info-label">Price</span></div>
+              <div class="col-xs-12">
+                {{car.value.price | currency: "$" : 0}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-8 car-pic">
+          <img class="img-responsive" src="/images/car-placeholder.jpg" style="min-height:100%" alt=""/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
