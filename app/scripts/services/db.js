@@ -1,10 +1,7 @@
 'use strict';
 
 /**
- * @ngdoc service
- * @name ngCarAppApp.db
- * @description
- * # db
+ * Database address
  * Constant in the ngCarAppApp.
  */
 angular.module('ngCarAppApp')

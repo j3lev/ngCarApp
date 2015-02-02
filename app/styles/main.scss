@@ -5,8 +5,17 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 $font-color: #616161;
+/* Space out content a bit */
 
-.browsehappy {
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #FFF;
+  background: url(../images/footer_lodyas/footer_lodyas.png);
+  font-family: 'Open Sans', sans-serif;
+}
+
+  .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
   color: #000;
@@ -17,17 +26,13 @@ $font-color: #616161;
   border-radius: 0px;
 }
 
-#add-new-btn {
-
-}
-
 .btn-default {
   border-radius: 0px;
 }
 
 .btn-row {
- margin-top: -2px;
- background-color: lighten($font-color, 30%);
+  margin-top: -2px;
+  background-color: lighten($font-color, 30%);
   .btn-default {
     outline: none;
     border: none;
@@ -43,15 +48,6 @@ $font-color: #616161;
     outline: none;
     border: none;
   }
-}
-
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: #FFF;
-  background: url(../images/footer_lodyas/footer_lodyas.png);
-  font-family: 'Open Sans', sans-serif;
 }
 
 .car-container {

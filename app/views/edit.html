@@ -3,46 +3,40 @@
     <h2>Edit Car</h2>
   </div>
   <div class="modal-body">
-
+    <!-- Edit Form -->
     <form class="form-horizontal" action="">
       <div class="form-group">
         <label for="make-input" class="col-xs-2 control-label">Make</label>
-
         <div class="col-xs-9">
           <input id="make-input" ng-model="car.value.make" type="text" class="form-control" placeholder="Make">
         </div>
       </div>
       <div class="form-group">
         <label for="model-input" class="text-center col-xs-2 control-label">Model</label>
-
         <div class="col-xs-9">
           <input id="model-input" ng-model="car.value.model" type="text" class="form-control" placeholder="Model">
         </div>
       </div>
       <div class="form-group">
         <label for="color-input" class="col-xs-2 control-label">Color</label>
-
         <div class="col-xs-9">
           <input id="color-input" ng-model="car.value.color" type="text" class="form-control" placeholder="Color">
         </div>
       </div>
       <div class="form-group">
         <label for="style-input" class="col-xs-2 control-label">Style</label>
-
         <div class="col-xs-9">
           <input id="style-input" ng-model="car.value.style" type="text" class="form-control" placeholder="Style">
         </div>
       </div>
       <div class="form-group">
         <label for="year-input" class="col-xs-2 control-label">Year</label>
-
         <div class="col-xs-2">
           <input id="year-input" ng-model="car.value.year" type="number" class="form-control" placeholder="Year">
         </div>
       </div>
       <div class="form-group">
         <label for="price-input" class="col-xs-2 control-label">Price</label>
-
         <div class="col-xs-2 input-group pull-left">
           <div class="input-group-addon">$</div>
           <input id="price-input" ng-model="car.value.price" type="number" class="form-control" placeholder="Price">
@@ -50,10 +44,13 @@
       </div>
     </form>
   </div>
-  <div class="modal-footer text-center row">
-    <div class="col-xs-2 col-xs-offset-5">
-      <button class="fa fa-times fa-2x btn btn-default" ng-click="$dismiss()"></button>
-      <button class="fa fa-check fa-2x btn btn-default" ng-click="submit()"></button>
+  <div class="modal-footer">
+    <!-- Submit/Dismiss Buttons -->
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-5">
+        <button class="fa fa-times fa-2x btn btn-default" ng-click="$dismiss()"></button>
+        <button class="fa fa-check fa-2x btn btn-default" ng-click="submit()"></button>
+      </div>
     </div>
   </div>
 </div>
