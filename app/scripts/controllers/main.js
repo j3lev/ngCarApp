@@ -8,7 +8,7 @@
  * Controller of the ngCarAppApp
  */
 angular.module('ngCarAppApp')
-  .controller('MainCtrl', function ($scope, $http, db, inventory, select, $modal) {
+  .controller('MainCtrl', function ($scope, $http, db, inventory, $modal) {
     $scope.cars = [];
 
 
