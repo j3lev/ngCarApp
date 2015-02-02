@@ -17,21 +17,32 @@ $font-color: #616161;
   border-radius: 0px;
 }
 
+#add-new-btn {
+
+}
+
+.btn-default {
+  border-radius: 0px;
+}
 
 .btn-row {
  margin-top: -2px;
  background-color: lighten($font-color, 30%);
-
   .btn-default {
     outline: none;
     border: none;
     background: none;
   }
-
 }
 
 #edit-modal {
   background-color: darken($font-color, 30%);
+  button {
+    background: none;
+    color: #FFF;
+    outline: none;
+    border: none;
+  }
 }
 
 /* Space out content a bit */

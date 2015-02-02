@@ -1,10 +1,15 @@
-<div class="row" ng-controller="MainCtrl">
-  <div class="col-xs-12 col-md-6" ng-repeat="car in cars">
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-default" id="add-new-btn" ng-click="edit()"><strong>add new car</strong></button>
+  </div>
+  <div class="clearfix">&nbsp;</div>
+  <div class="col-xs-12 col-md-6" ng-repeat="car in cars track by car.id">
     <div class="panel car-container">
-      <div class="row btn-row" >
+      <div class="row btn-row">
+
         <div class="col-xs-12">
-          <i class="fa fa-pencil-square btn btn-default" ng-click="edit()"></i>
-          <i class="fa fa-times-circle btn btn-default"></i>
+          <i class="fa fa-pencil-square btn btn-default" ng-click="edit(car, $index)"></i>
+          <i class="fa fa-times-circle btn btn-default" ng-click="remove(car, $index)"></i>
         </div>
       </div>
       <div class="row">
@@ -47,6 +52,6 @@
         </div>
       </div>
     </div>
-    <br />
+    <br/>
   </div>
 </div>

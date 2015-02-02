@@ -14,14 +14,21 @@ angular.module('ngCarAppApp')
 
     return {
       grab: function () {
-        var promise = $http.get(db + '/_design/inventory/_view/full').then(function (res) {
+        var promise = $http.get(db + '_design/inventory/_view/full').then(function (res) {
           return res.data.rows;
         });
         return promise;
       },
-     upload: function (data) {
-        $http.post(db, data).error(function() {
-          console.log('Error Posting');
+      upload: function (data) {
+        var promise = $http.post(db, data).
+          success(function (response) {
+            return response;
+          });
+        return promise;
+      },
+      remove: function (data) {
+        $http.delete(db + data.id + '?rev=' + data.value._rev).error(function () {
+          console.log("Error Deleting");
         });
       }
     }

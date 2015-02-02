@@ -8,10 +8,22 @@
  * Controller of the ngCarAppApp
  */
 angular.module('ngCarAppApp')
-  .controller('EditCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('EditCtrl', function ($scope, $modalInstance, carEdit) {
+    if (carEdit === undefined) {
+      $scope.car = {
+        "value": {
+          "make": "",
+          "model": "",
+          "color": "",
+          "price": "",
+          "year": "",
+          "style": ""
+        }
+      }
+    } else $scope.car = angular.copy(carEdit);
+
+    $scope.submit = function() {
+      $modalInstance.close($scope.car);
+    }
+
   });
