@@ -8,7 +8,7 @@
  * Controller of the ngCarAppApp
  */
 angular.module('ngCarAppApp')
-  .controller('MainCtrl', function ($scope, $http, db, inventory) {
+  .controller('MainCtrl', function ($scope, $http, db, inventory, select, $modal) {
 
     $scope.cars = [];
 
@@ -16,13 +16,17 @@ angular.module('ngCarAppApp')
       $scope.cars = result;
     });
 
+    $scope.edit = function(car) {
+      var editInstance = $modal.open({
+        templateUrl: '../../views/edit.html',
+        controller: 'EditCtrl',
+        size: 'lg',
+        resolve: {
+          carEdit: function() {
+            return car;
+          }
+        }
+      });
+    };
 
-    $scope.add = function() {
-      $scope.cars.push($scope.testitem);
-      $http.post(db, $scope.testitem).success(function() {
-        console.log('Document Post Successful');
-      }).error(function() {
-        console.log('Document Post Failed');
-      })
-    }
   });

@@ -1,6 +1,12 @@
 <div class="row" ng-controller="MainCtrl">
-  <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="car in cars">
+  <div class="col-xs-12 col-md-6" ng-repeat="car in cars">
     <div class="panel car-container">
+      <div class="row btn-row" >
+        <div class="col-xs-12">
+          <i class="fa fa-pencil-square btn btn-default" ng-click="edit()"></i>
+          <i class="fa fa-times-circle btn btn-default"></i>
+        </div>
+      </div>
       <div class="row">
         <div class="col-xs-4 car-info">
           <div class="panel-body">
@@ -41,5 +47,6 @@
         </div>
       </div>
     </div>
+    <br />
   </div>
 </div>

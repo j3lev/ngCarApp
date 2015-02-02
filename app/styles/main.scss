@@ -4,6 +4,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "components-font-awesome/scss/font-awesome.scss";
 // endbower
 
+$font-color: #616161;
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -15,8 +17,21 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   border-radius: 0px;
 }
 
-h1 {
-  letter-spacing: 15px;
+
+.btn-row {
+ margin-top: -2px;
+ background-color: lighten($font-color, 30%);
+
+  .btn-default {
+    outline: none;
+    border: none;
+    background: none;
+  }
+
+}
+
+#edit-modal {
+  background-color: darken($font-color, 30%);
 }
 
 /* Space out content a bit */
@@ -31,7 +46,11 @@ body {
 .car-container {
   background-color: #FFF;
   font-size: 1em;
-  color: #616161;
+  color: $font-color;
+  overflow: hidden;
+  .selected {
+    outline: 2px solid blue;
+  }
   .car-info {
     .info-label {
       text-transform: uppercase;

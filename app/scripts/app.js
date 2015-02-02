@@ -11,21 +11,15 @@
 angular
   .module('ngCarAppApp', [
     'ngAnimate',
-    'ngCookies',
     'ngResource',
     'ngRoute',
-    'ngSanitize',
-    'ngTouch'
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .when('/edit', {
-        templateUrl: 'views/edit.html',
-        controller: 'EditCtrl'
       })
       .otherwise({
         redirectTo: '/'
