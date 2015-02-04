@@ -7,8 +7,21 @@
 angular.module('ngCarAppApp')
   .controller('EditCtrl', function ($scope, $modalInstance, carEdit) {
 
-    if (carEdit === undefined) {  //If car is new
-      $scope.car = {  //Initialize empty car with schema
+    $scope.car = {};
+
+    $scope.initialize = function (carObj) {
+      if (carObj === undefined) {  //If car is new
+        $scope.car = $scope.setCar; //$scope.setCar;
+      } else $scope.car = angular.copy(carObj); //Create copy of car object
+
+    };
+
+    $scope.submit = function () {
+      $modalInstance.close($scope.car); //Pass data back to MainCtrl controller
+    };
+
+    $scope.setCar = function () {
+      return {  //Initialize empty car with schema
         "value": {
           "make": "",
           "model": "",
@@ -17,11 +30,9 @@ angular.module('ngCarAppApp')
           "year": "",
           "style": ""
         }
-      }
-    } else $scope.car = angular.copy(carEdit); //Create copy of car object
+      };
+    };
 
-    $scope.submit = function () {
-      $modalInstance.close($scope.car); //Pass data back to MainCtrl controller
-    }
+    $scope.initialize(carEdit);
 
   });

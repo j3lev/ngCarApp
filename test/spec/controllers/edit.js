@@ -2,21 +2,60 @@
 
 describe('Controller: EditCtrl', function () {
 
-  // load the controller's module
   beforeEach(module('ngCarAppApp'));
 
-  var EditCtrl,
-    scope;
+  var Ctrl,
+    scope,
+    modalInstance,
+    carEdit;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    EditCtrl = $controller('EditCtrl', {
-      $scope: scope
-    });
-  }));
+  beforeEach(inject(
+      function ($controller, $rootScope, _$modal_) {
+        scope = $rootScope.$new();
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+        modalInstance = _$modal_.open({
+          templateUrl: 'views/edit.html'
+        });
+
+        Ctrl = $controller('EditCtrl', {
+          $scope: scope,
+          $modalInstance: modalInstance,
+          carEdit: function () {
+            return carEdit;
+          }
+        });
+      })
+  );
+
+  describe('Function initialize', function () {
+
+    it('should be defined', function () {
+      expect(scope.initialize).toBeDefined();
+    });
+
+    it('should initialize a new car object', function () {
+      expect(scope.car).toBeDefined();
+    });
+
+    it('should copy the object if it is defined', function () {
+      carEdit = {'Value': 'America'};
+      expect(scope.car()).toBe(carEdit);
+    });
+
+    it('should populate the new object with empty values if existing object is undefined', function () {
+      carEdit = undefined;
+      console.log(scope.car());
+    });
+
   });
+
+  describe('Function setCar', function () {
+
+    it('should be defined', function () {
+      expect(scope.setCar).toBeDefined();
+    });
+
+  });
+
 });
