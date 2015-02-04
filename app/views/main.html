@@ -3,7 +3,7 @@
 
     <!--New Car Button-->
 
-    <button class="btn btn-default" id="add-new-btn" ng-click="edit()">
+    <button class="btn btn-default" id="add-new-btn" ng-click="edit(null, null)">
       <strong>add new car</strong>
     </button>
 
@@ -13,18 +13,13 @@
     <div class="panel car-container">
       <div class="row btn-row">
         <div class="col-xs-12">
-
           <!-- Edit/Remove Buttons -->
-
           <i class="fa fa-pencil-square btn btn-default" ng-click="edit(car, $index)"></i>
           <i class="fa fa-times-circle btn btn-default" ng-click="remove(car, $index)"></i>
-
         </div>
       </div>
       <div class="row">
-
         <!-- Car Attribute Fields -->
-
         <div class="col-xs-4 car-info">
           <div class="panel-body">
             <div class="row">
@@ -59,11 +54,9 @@
             </div>
           </div>
         </div>
-
         <!-- Car Image -->
-
         <div class="col-xs-8 car-pic">
-          <img class="img-responsive" src="/images/car-placeholder.jpg" style="min-height:100%" alt=""/>
+          <img class="img-responsive" src="/images/car-placeholder.jpg" alt=""/>
         </div>
 
       </div>

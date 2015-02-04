@@ -6,13 +6,33 @@ describe('Service: inventory', function () {
   beforeEach(module('ngCarAppApp'));
 
   // instantiate service
-  var inventory;
-  beforeEach(inject(function (_inventory_) {
-    inventory = _inventory_;
+  var inventory,
+      db,
+      httpBackend;
+
+  beforeEach(inject(function (_inventory_, _db_, $httpBackend) {
+    inventory = _inventory_,
+    db = _db_;
+    httpBackend = $httpBackend
   }));
 
-  it('should do something', function () {
-    expect(!!inventory).toBe(true);
+  afterEach(function() {
+    //httpBackend.flush();
   });
 
+  describe('Grab method', function () {
+    it('should be defined', function () {
+      expect(inventory.grab).toBeDefined();
+    });
+    it('should pull inventory from DB', function() {
+      httpBackend.expectGET(db + '_design/inventory/_view/full').respond('Hello');
+      var grabTest = inventory.grab();
+      var result;
+      grabTest.then(function(response) {
+       result  = response;
+      });
+      wait(500);
+      console.log(result);
+    });
+  });
 });

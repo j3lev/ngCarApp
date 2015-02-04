@@ -11,8 +11,8 @@ describe('Service: db', function () {
     db = _db_;
   }));
 
-  it('should do something', function () {
-    expect(!!db).toBe(true);
+  it('be equal to the database address', function () {
+    expect(db).toBe('http://127.0.0.1:5984/cars/');
   });
 
 });

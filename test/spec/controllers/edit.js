@@ -39,13 +39,15 @@ describe('Controller: EditCtrl', function () {
     });
 
     it('should copy the object if it is defined', function () {
-      carEdit = {'Value': 'America'};
-      expect(scope.car()).toBe(carEdit);
+      carEdit = {'key': 'value'};
+      scope.initialize(carEdit);
+      expect(scope.car).toEqual(carEdit);
     });
 
     it('should populate the new object with empty values if existing object is undefined', function () {
-      carEdit = undefined;
-      console.log(scope.car());
+      carEdit = null;
+      scope.initialize(carEdit);
+      expect(scope.car).toEqual(scope.setCar());
     });
 
   });
@@ -54,6 +56,14 @@ describe('Controller: EditCtrl', function () {
 
     it('should be defined', function () {
       expect(scope.setCar).toBeDefined();
+    });
+
+  });
+
+  describe('Function submit', function () {
+
+    it('should be defined', function() {
+      expect(scope.submit).toBeDefined();
     });
 
   });
