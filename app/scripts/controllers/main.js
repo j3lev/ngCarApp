@@ -13,14 +13,14 @@ angular.module('ngCarAppApp')
     //Gets data from DB using inventory service
     $scope.initialize = function () {
       inventory.grab().then(function (result) {
-        $scope.cars = result;
+        $scope.cars = result.data.rows;
       });
     }
 
     //Edit function that is called on button click
     //Initializes modal, passes data to it, and processes returned promise
     $scope.edit = function (car, index) {
-      var editInstance = $modal.open({
+      $scope.editInstance = $modal.open({
         templateUrl: '../../views/edit.html',
         controller: 'EditCtrl',
         size: 'lg',
@@ -30,7 +30,7 @@ angular.module('ngCarAppApp')
           }
         }
       });
-      editInstance.result.then(function (carEdit) {
+      $scope.editInstance.result.then(function (carEdit) {
         $scope.save(carEdit, index);
       });
     }
@@ -38,7 +38,7 @@ angular.module('ngCarAppApp')
     //Deletes index from DOM and removes item from DB
     $scope.remove = function (item, index) {
       inventory.remove(item);
-      $scope.cars.splice(index, 1);
+      $scope.domRemove(index);
     }
 
     //Checks if car is edited or new
@@ -62,6 +62,10 @@ angular.module('ngCarAppApp')
     //Creates element in DOM
     $scope.domCreate = function (item) {
       $scope.cars.push(item);
+    }
+
+    $scope.domRemove = function(index) {
+      $scope.cars.splice(index, 1);
     }
 
     $scope.initialize();

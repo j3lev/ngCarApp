@@ -8,25 +8,16 @@ describe('Controller: MainCtrl', function () {
   var MainCtrl,
       scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, inventory) {
+  beforeEach(inject(function ($controller, $rootScope, inventory, _$modal_) {
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
-      $scope: scope,
-      inventory: inventory
+      $scope: scope
     });
+
     spyOn(inventory, 'grab').and.callFake(function() {
       return {
         then: function(response) {
-          response('grab response');
-        }
-      };
-    });
-    spyOn(inventory, 'remove');
-    spyOn(inventory, 'upload').and.callFake(function() {
-      return {
-        upload: function(response) {
-          response('upload response');
+          response({"data": {"rows": "hello world!"}});
         }
       };
     });
@@ -42,7 +33,7 @@ describe('Controller: MainCtrl', function () {
     });
     it('get data from inventory service', function() {
       scope.initialize();
-      expect(scope.cars).toEqual('grab response');
+      expect(scope.cars).toBe('hello world!');
     });
   });
 
@@ -50,20 +41,27 @@ describe('Controller: MainCtrl', function () {
     it('should be defined', function () {
       expect(scope.edit).toBeDefined();
     });
+    it('should define an edit modal instance', function(){
+      scope.edit(null, null);
+      expect(scope.editInstance).toBeDefined();
+    });
   });
+
 
   describe('Function remove', function () {
     it('should be defined', function () {
       expect(scope.remove).toBeDefined();
     });
-    it('should remove an element from backend', function() {
-      spyOn(inventory, 'remove');
-      scope.remove('b', 1);
-      expect(inventory.remove).toHaveBeenCalled();
-    });
-    it('should remove an element from the DOM', function() {
-      scope.remove('a', 0);
-      expect(scope.cars).toEqual(['b', 'c']);
+    it('should call domRemove', function() {
+      var mockItem = {
+        "id": "000",
+        "value": {
+          "_rev": "000"
+        }
+      };
+      spyOn(scope, 'domRemove');
+      scope.remove(mockItem, null);
+      expect(scope.domRemove).toHaveBeenCalled();
     });
   });
 
@@ -71,11 +69,7 @@ describe('Controller: MainCtrl', function () {
     it('should be defined', function () {
       expect(scope.save).toBeDefined();
     });
-    it('should upload to inventory', function() {
-      spyOn(scope, 'domCreate');
-      scope.save(null, null);
-      expect(scope.domCreate).toHaveBeenCalled();
-    });
+
   });
 
   describe('Function domUpdate', function () {
@@ -95,6 +89,13 @@ describe('Controller: MainCtrl', function () {
     it('should push an element', function() {
       scope.domCreate('d');
       expect(scope.cars).toEqual(['a', 'b', 'c', 'd']);
+    });
+  });
+
+  describe('Function domRemove', function() {
+    it('should remove an element from the DOM', function() {
+      scope.domRemove('a', 0);
+      expect(scope.cars).toEqual(['b', 'c']);
     });
   });
 });
